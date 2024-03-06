@@ -1,4 +1,4 @@
 data
 1brc
 
-*.out
+profiles/*.out
