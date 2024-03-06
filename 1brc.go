@@ -124,26 +124,10 @@ func evaluate(inputFile string) string {
 		}
 		result += fmt.Sprintf("%s=%s/%s/%s",
 			k,
-			formattedNumber(resultMap[k].Min),
-			formattedAvg(resultMap[k].Sum, resultMap[k].Count),
-			formattedNumber(resultMap[k].Max),
+			lib.FormattedNumber(resultMap[k].Min),
+			lib.FormattedAvg(resultMap[k].Sum, resultMap[k].Count),
+			lib.FormattedNumber(resultMap[k].Max),
 		)
 	}
 	return result
-}
-
-func formattedNumber(num int64) string {
-	if num >= 0 {
-		return fmt.Sprintf("%d.%d", num/10, num%10)
-	} else {
-		return fmt.Sprintf("-%d.%d", -num/10, -num%10)
-	}
-}
-
-func formattedAvg(sum, count int64) string {
-	avg := sum / count
-	if avg > 0 {
-		avg = (sum + count - 1) / count
-	}
-	return formattedNumber(avg)
 }
